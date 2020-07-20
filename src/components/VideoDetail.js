@@ -1,23 +1,22 @@
 import React from 'react';
-import { Paper, Typography } from '@material-ui/core';
 
 const VideoDetail = ({ videos }) => {
-    if (!videos) return <div>Loading...</div>
+  if (!videos) return <div>Loading...</div>
 
-    const videoSrc = `https://www.youtube.com/embed/${videos.id.videoId}`
+  const videoSrc = `https://www.youtube.com/embed/${videos.id.videoId}`
 
-    return (
-        <React.Fragment>
-            <Paper elevation={6} style={{ height: '70%' }}>
-                <iframe frameBorder='0' height='100%' width='100%' title='VideoPlayer' src={videoSrc} />
-            </Paper>
-            <Paper elevation={6} style={{ padding: '15px' }}>
-                <Typography variant="h4">{videos.snippet.title}</Typography>
-                <Typography variant="subtitle1">{videos.snippet.channelTitle}</Typography>
-                <Typography variant="subtitle2">{videos.snippet.description}</Typography>
-            </Paper>
-        </React.Fragment>
-    )
+  return (
+    <div className="videoDetail">
+      <div className="video">
+        <iframe frameBorder='0' height='100%' width='100%' title='VideoPlayer' src={videoSrc} />
+      </div>
+      <div className="videoDescription">
+        <div className="title">{videos.snippet.title}</div>
+        <div className="channel">{videos.snippet.channelTitle}</div>
+        <div className="description">{videos.snippet.description}</div>
+      </div>
+    </div>
+  )
 }
 
 export default VideoDetail;

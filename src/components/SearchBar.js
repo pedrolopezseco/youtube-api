@@ -1,32 +1,35 @@
 import React from 'react';
-import { Paper, TextField } from '@material-ui/core';
+import logo from './logo.png';
 
 class SearchBar extends React.Component {
-    state = {
-        searchTerm: '',
-    }
+  state = {
+    searchTerm: '',
+  }
 
-    handleChange = (event) => this.setState({ searchTerm: event.target.value });
+  handleChange = (event) => this.setState({ searchTerm: event.target.value });
 
-    handleSubmit = (event) => {
-        const { searchTerm } = this.state;
-        const { onFormSubmit } = this.props;
+  handleSubmit = (event) => {
+    const { searchTerm } = this.state;
+    const { onFormSubmit } = this.props;
 
-        onFormSubmit(searchTerm);
+    onFormSubmit(searchTerm);
 
-        event.preventDefault();
+    event.preventDefault();
 
-    }    
-    
-    render() {
-        return(
-            <Paper elevation={6} style={{ padding: '25px' }}>
-                <form onSubmit={this.handleSubmit}>
-                    <TextField fullWidth label="Search..." onChange={this.handleChange}></TextField>
-                </form>
-            </Paper>
-        )
-    }
+  }
+
+  render() {
+    return (
+      <div className="searchBar">
+        <img className="logo" src={logo} alt="logo"></img>
+        <div className="onSubmit" >
+          <form onSubmit={this.handleSubmit}>
+            <input onChange={this.handleChange}></input>
+          </form>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default SearchBar;
